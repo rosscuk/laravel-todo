@@ -9,7 +9,8 @@ Route::post('/login', ['middleware' => 'guest', 'uses' => 'AuthController@postLo
 Route::get('/logout', ['middleware' => 'auth', 'uses' => 'AuthController@logout']);
 
 // Registration and User Profile
-Route::resource('user', 'UserController', ['except' => ['index', 'show', 'destroy']]);
+// NB: added create to remove registration
+Route::resource('user', 'UserController', ['except' => ['index', 'show', 'destroy','create']]);
 
 // Todo Resources
 Route::resource('todo', 'TodoController', ['middleware' => 'auth']);

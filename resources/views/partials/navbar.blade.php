@@ -15,7 +15,7 @@
         <div class="collapse navbar-collapse" id="navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 @if(\Auth::guest())
-                    <li><a href="{{ url('/user/create') }}">Register</a></li>
+                    {{-- <li><a href="{{ url('/user/create') }}">Register</a></li> --}}
                     <li><a href="{{ url('/login') }}">Sign In</a></li>
                 @else
                     <li><a href="#">Welcome, {{ \Auth::user()->name }}</a></li>

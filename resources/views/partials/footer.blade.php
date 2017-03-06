@@ -1,6 +1,6 @@
 <hr/>
 
 <div class="container">
-    &copy; {{ date('Y') }}, <a href="http://milon.im">Nuruzzaman Milon</a>
+    &copy; {{ date('Y') }}<a href="#"></a>
     <br/>
 </div>
