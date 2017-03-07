@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Todo extends Model
+class Subtask extends Model
 {
     /*
      * Table name
      */
-    protected $table = 'todos';
+    protected $table = 'subtasks';
 
     /*
      * Fillable fields for protecting mass assignment vulnerability
@@ -17,6 +17,7 @@ class Todo extends Model
     protected $fillable = [
         'name',
         'user_id',
+        'todo_id',
     ];
 
     /*
@@ -26,8 +27,8 @@ class Todo extends Model
         'complete' => 'boolean',
     ];
 
-            public function subtasks() 
+            public function todo() 
             {
-               return $this->hasMany(Subtask::class); 
+               return $this->belongsTo(Todo::class); 
             }
 }
