@@ -9,8 +9,10 @@ Route::post('/login', ['middleware' => 'guest', 'uses' => 'AuthController@postLo
 Route::get('/logout', ['middleware' => 'auth', 'uses' => 'AuthController@logout']);
 
 // Registration and User Profile
-// NB: added create to remove registration
+// NB: added create to exept array to remove registration
 Route::resource('user', 'UserController', ['except' => ['index', 'show', 'destroy','create']]);
 
 // Todo Resources
+Route::get('/todo/complete', 'TodoController@complete');
+Route::get('/todo/pending', 'TodoController@pending');
 Route::resource('todo', 'TodoController', ['middleware' => 'auth']);

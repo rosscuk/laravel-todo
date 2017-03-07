@@ -20,6 +20,18 @@ class TodoController extends Controller
         return view('todo.list', compact('todoList'));
     }
 
+    public function complete()
+    {
+        $todoList = Todo::where('complete', '1')->paginate(7);
+        return view('todo.list', compact('todoList'));
+    }
+
+    public function pending()
+    {
+        $todoList = Todo::where('complete','!=', '1')->paginate(7);
+        return view('todo.list', compact('todoList'));
+    }
+
     /**
      * View Create Form.
      *

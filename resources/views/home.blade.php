@@ -8,6 +8,6 @@
         @include('partials.flash_notification')
 
   
-        <h4><a href="#">Ross Calvert</a></h4>
+        
     </div>
 @endsection
