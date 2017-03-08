@@ -13,6 +13,6 @@ Route::get('/logout', ['middleware' => 'auth', 'uses' => 'AuthController@logout'
 Route::resource('user', 'UserController', ['except' => ['index', 'show', 'destroy','create']]);
 
 // Todo Resources
-Route::get('/todo/complete', 'TodoController@complete');
-Route::get('/todo/pending', 'TodoController@pending');
-Route::resource('todo', 'TodoController', ['middleware' => 'auth']);
+Route::get('/task/complete', 'TaskController@complete');
+Route::get('/task/pending', 'TaskController@pending');
+Route::resource('task', 'TaskController', ['middleware' => 'auth']);

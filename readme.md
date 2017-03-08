@@ -1,8 +1,12 @@
 # Laravel ToDo App
 
-This is a simple ToDo app with multiple user support.
+This is a ToDo app with multiple user support.
 
-This is built on Laravel Framework 5.1. This was built for demonstrate purpose.
+It has been forked from a really good siple example:
+
+https://github.com/milon/laravel-todo (A really good example to geyt started)
+
+I plan to add my own extra features to this and use this forked repo as a starting point.
 
 ## Installation
 
@@ -52,15 +56,6 @@ php artisan serve
 
 Then go to `http://localhost:8000` from your browser and see the app.
 
-## Ask a question?
 
-If you have any query please contact at milon521@gmail.com
 
-## Screenshot
 
-![Landing Page](/screenshots/1.png)
-![Sign In Page](/screenshots/2.png)
-![Registration Page](/screenshots/3.png)
-![ToDo List Page](/screenshots/4.png)
-![Create New ToDo Page](/screenshots/5.png)
-![User Profile Page](/screenshots/6.png)

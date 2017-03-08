@@ -17,7 +17,7 @@ class Subtask extends Model
     protected $fillable = [
         'name',
         'user_id',
-        'todo_id',
+        'task_id',
     ];
 
     /*
@@ -27,8 +27,8 @@ class Subtask extends Model
         'complete' => 'boolean',
     ];
 
-            public function todo() 
+            public function task() 
             {
-               return $this->belongsTo(Todo::class); 
+               return $this->belongsTo(Task::class); 
             }
 }

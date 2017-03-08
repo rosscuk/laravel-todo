@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Todo;
+use App\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class TodoController extends Controller
+class TaskController extends Controller
 {
     /**
      * View ToDos listing.
@@ -15,21 +15,21 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todoList = Todo::where('user_id', Auth::id())->paginate(7);
+        $taskList = Task::where('user_id', Auth::id())->paginate(7);
 
-        return view('todo.list', compact('todoList'));
+        return view('task.list', compact('taskList'));
     }
 
     public function complete()
     {
-        $todoList = Todo::where('complete', '1')->paginate(7);
-        return view('todo.list', compact('todoList'));
+        $taskList = Task::where('complete', '1')->paginate(7);
+        return view('task.list', compact('taskList'));
     }
 
     public function pending()
     {
-        $todoList = Todo::where('complete','!=', '1')->paginate(7);
-        return view('todo.list', compact('todoList'));
+        $taskList = Task::where('complete','!=', '1')->paginate(7);
+        return view('task.list', compact('taskList'));
     }
 
     /**
@@ -39,7 +39,7 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('todo.create');
+        return view('task.create');
     }
 
     /**
@@ -53,13 +53,13 @@ class TodoController extends Controller
     {
         $this->validate($request, ['name' => 'required']);
 
-        Todo::create([
+        Task::create([
             'name' => $request->get('name'),
             'user_id' => Auth::user()->id,
         ]);
 
-        return redirect('/todo')
-            ->with('flash_notification.message', 'New todo created successfully')
+        return redirect('/task')
+            ->with('flash_notification.message', 'New task created successfully')
             ->with('flash_notification.level', 'success');
     }
 
@@ -72,13 +72,13 @@ class TodoController extends Controller
      */
     public function update($id)
     {
-        $todo = Todo::findOrFail($id);
-        $todo->complete = !$todo->complete;
-        $todo->save();
+        $task = Task::findOrFail($id);
+        $task->complete = !$task->complete;
+        $task->save();
 
         return redirect()
-            ->route('todo.index')
-            ->with('flash_notification.message', 'Todo updated successfully')
+            ->route('task.index')
+            ->with('flash_notification.message', 'Task updated successfully')
             ->with('flash_notification.level', 'success');
     }
 

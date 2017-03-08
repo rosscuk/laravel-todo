@@ -4,10 +4,10 @@
     <h1>Create New Todo</h1>
     <hr/>
 
-    {!! Form::open(['url' => '/todo', 'class' => 'form-horizontal', 'role' => 'form']) !!}
+    {!! Form::open(['url' => '/task', 'class' => 'form-horizontal', 'role' => 'form']) !!}
         <!-- Name Field -->
         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-            {!! Form::label('name', 'Todo Name', ['class' => 'col-sm-3 control-label']) !!}
+            {!! Form::label('name', 'Task Name', ['class' => 'col-sm-3 control-label']) !!}
             <div class="col-sm-6">
                 {!! Form::text('name', null, ['class' => 'form-control']) !!}
                 <span class="help-block text-danger">

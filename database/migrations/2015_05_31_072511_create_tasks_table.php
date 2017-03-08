@@ -12,7 +12,7 @@ class CreateTodosTable extends Migration
      */
     public function up()
     {
-        Schema::create('todos', function (Blueprint $table) {
+        Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->unsignedInteger('user_id');
@@ -28,6 +28,6 @@ class CreateTodosTable extends Migration
      */
     public function down()
     {
-        Schema::drop('todos');
+        Schema::drop('tasks');
     }
 }

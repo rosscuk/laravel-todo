@@ -19,9 +19,9 @@
                     <li><a href="{{ url('/login') }}">Sign In</a></li>
                 @else
                     <li><a href="#">Welcome, {{ \Auth::user()->name }}</a></li>
-                    <li><a href="{{ url('/todo/pending' )}}">Pending Tasks</a></li>
-                    <li><a href="{{ url('/todo/complete' )}}">Completed Tasks</a></li>
-                    <li><a href="{{ route('todo.index' )}}">All Tasks</a></li>
+                    <li><a href="{{ url('/task/pending' )}}">Pending Tasks</a></li>
+                    <li><a href="{{ url('/task/complete' )}}">Completed Tasks</a></li>
+                    <li><a href="{{ route('task.index' )}}">All Tasks</a></li>
                     <li><a href="{{ route('user.edit', \Auth::user()->id) }}">Profile</a></li>
                     <li><a href="{{ url('/logout') }}">Sign Out</a></li>
                 @endif
