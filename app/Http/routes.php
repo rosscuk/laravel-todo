@@ -12,7 +12,7 @@ Route::get('/logout', ['middleware' => 'auth', 'uses' => 'AuthController@logout'
 // NB: added create to exept array to remove registration
 Route::resource('user', 'UserController', ['except' => ['index', 'show', 'destroy','create']]);
 
-// Todo Resources
+
 Route::get('/task/complete', 'TaskController@complete');
 Route::get('/task/pending', 'TaskController@pending');
 Route::resource('task', 'TaskController', ['middleware' => 'auth']);

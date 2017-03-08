@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-    <h1>Todo List <a href="{{ url('/task/create') }}" class="btn btn-primary pull-right btn-sm">Add New Task</a></h1>
+    <h1>Todo List <a href="{{ url('/task/create') }}" class="btn btn-primary pull-right btn-sm">Create New Task</a></h1>
     <hr/>
 
     @include('partials.flash_notification')
@@ -11,7 +11,7 @@
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                 <tr>
-                    <th>Task Name</th>
+                    <th colspan="2">Task Name</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -20,6 +20,7 @@
                 <tbody>
                 @foreach($taskList as $task)
                     <tr>
+                        <td><a href="{{ route('task.edit', $task->id) }}"><span class="glyphicon glyphicon-pencil" style="font-size:1.5em;" aria-hidden="true"></span></a></td>
                         <td>{{ $task->name }}</td>
                         <td>{{ $task->complete? 'Completed' : 'Pending' }}</td>
                         <td>

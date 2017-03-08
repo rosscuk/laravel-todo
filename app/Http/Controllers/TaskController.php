@@ -17,19 +17,19 @@ class TaskController extends Controller
     {
         $taskList = Task::where('user_id', Auth::id())->paginate(7);
 
-        return view('task.list', compact('taskList'));
+        return view('tasks.list', compact('taskList'));
     }
 
     public function complete()
     {
-        $taskList = Task::where('complete', '1')->paginate(7);
-        return view('task.list', compact('taskList'));
+        $taskList = Task::where('complete', '1')->paginate(10);
+        return view('tasks.list', compact('taskList'));
     }
 
     public function pending()
     {
-        $taskList = Task::where('complete','!=', '1')->paginate(7);
-        return view('task.list', compact('taskList'));
+        $taskList = Task::where('complete','!=', '1')->paginate(10);
+        return view('tasks.list', compact('taskList'));
     }
 
     /**
@@ -39,7 +39,7 @@ class TaskController extends Controller
      */
     public function create()
     {
-        return view('task.create');
+        return view('tasks.create');
     }
 
     /**
@@ -63,6 +63,26 @@ class TaskController extends Controller
             ->with('flash_notification.level', 'success');
     }
 
+
+    public function edit($id)
+    {
+        $task = Task::findOrFail($id);
+        return view('tasks.edit', compact('task'));
+    }
+
+    public function update($id, Request $request)
+    {
+        $task = Task::findOrFail($id);
+
+        $this->validate($request, ['name' => 'required']);
+
+        $task->update($request->all());
+
+        return redirect('/task')
+            ->with('flash_notification.message', 'Task updated successfully')
+            ->with('flash_notification.level', 'success');
+    }
+
     /**
      * Toggle Status.
      *
@@ -70,17 +90,7 @@ class TaskController extends Controller
      *
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update($id)
-    {
-        $task = Task::findOrFail($id);
-        $task->complete = !$task->complete;
-        $task->save();
-
-        return redirect()
-            ->route('task.index')
-            ->with('flash_notification.message', 'Task updated successfully')
-            ->with('flash_notification.level', 'success');
-    }
+    
 
     /**
      * Delete Todo.
@@ -95,7 +105,7 @@ class TaskController extends Controller
         $todo->delete();
 
         return redirect()
-            ->route('todo.index')
+            ->route('tasks.index')
             ->with('flash_notification.message', 'Todo deleted successfully')
             ->with('flash_notification.level', 'success');
     }
