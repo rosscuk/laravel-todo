@@ -20,7 +20,8 @@
                 <tbody>
                 @foreach($taskList as $task)
                     <tr>
-                        <td><a href="{{ route('task.edit', $task->id) }}"><span class="glyphicon glyphicon-pencil" style="font-size:1.5em;" aria-hidden="true"></span></a></td>
+                        <td><a href="{{ route('task.show', $task->id) }}"><i class="fa fa-cog"></i></a>
+                        </td>
                         <td>{{ $task->name }}</td>
                         <td>{{ $task->complete? 'Completed' : 'Pending' }}</td>
                         <td>
@@ -41,6 +42,7 @@
                 @endforeach
                 </tbody>
             </table>
+
         </div>
         <div class="text-center">
             {!! $taskList->render() !!}
@@ -51,4 +53,6 @@
             <p><a href="{{ url('/task/create') }}">Create new task</a></p>
         </div>
     @endif
+
+    
 @endsection

@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+	<div class="row">
     <h1>Edit Task</h1>
     <hr/>
 
@@ -9,8 +10,9 @@
 
      {!! Form::model($task,['method' => 'PATCH','action' => ['TaskController@update', $task->id]]) !!}
 
-        @include('tasks._form',['submitButtonText' => 'Edit Task'])
+        @include('tasks._form',['submitButtonText' => 'Update Task'])
 
     {!! Form::close() !!}
-
+    </div>
+    
 @endsection

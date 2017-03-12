@@ -15,7 +15,7 @@ class CreateSubtasksTable extends Migration
         Schema::create('subtasks', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->integer('todo_id');
+            $table->integer('task_id');
             $table->unsignedInteger('user_id');
             $table->boolean('complete')->default(false);
             $table->timestamps();

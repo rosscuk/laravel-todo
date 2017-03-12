@@ -15,20 +15,20 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $taskList = Task::where('user_id', Auth::id())->paginate(7);
+        $taskList = Task::where('user_id', Auth::id())->paginate(15);
 
         return view('tasks.list', compact('taskList'));
     }
 
     public function complete()
     {
-        $taskList = Task::where('complete', '1')->paginate(10);
+        $taskList = Task::where('complete', '1')->paginate(15);
         return view('tasks.list', compact('taskList'));
     }
 
     public function pending()
     {
-        $taskList = Task::where('complete','!=', '1')->paginate(10);
+        $taskList = Task::where('complete','!=', '1')->paginate(15);
         return view('tasks.list', compact('taskList'));
     }
 
@@ -63,6 +63,11 @@ class TaskController extends Controller
             ->with('flash_notification.level', 'success');
     }
 
+    public function show($id)
+    {
+        $task = Task::findOrFail($id);
+        return view('tasks.show', compact('task'));
+    }
 
     public function edit($id)
     {
@@ -72,16 +77,29 @@ class TaskController extends Controller
 
     public function update($id, Request $request)
     {
+
         $task = Task::findOrFail($id);
 
-        $this->validate($request, ['name' => 'required']);
+            // if name is set (from edit task form)
+            if ($request->has('name')) {
+            $this->validate($request, ['name' => 'required']);
+            $task->update($request->all());
 
-        $task->update($request->all());
-
-        return redirect('/task')
+            return redirect()->route('task.show', ['id' => $id])
             ->with('flash_notification.message', 'Task updated successfully')
             ->with('flash_notification.level', 'success');
+            }
+            
+            // if status changed (from task list)
+            if (isset($task->complete)) {
+            $task->complete = !$task->complete;
+            $task->save();
+
+            return redirect('/task');
+            }
+
     }
+
 
     /**
      * Toggle Status.
@@ -101,12 +119,12 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        $todo = Todo::findOrFail($id);
+        $todo = Task::findOrFail($id);
         $todo->delete();
 
         return redirect()
-            ->route('tasks.index')
-            ->with('flash_notification.message', 'Todo deleted successfully')
+            ->route('task.index')
+            ->with('flash_notification.message', 'Task deleted successfully')
             ->with('flash_notification.level', 'success');
     }
 }

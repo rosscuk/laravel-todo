@@ -2,11 +2,11 @@
 
 This is a ToDo app with multiple user support.
 
-It has been forked from a really good siple example:
+It has been forked from a really good simple example:
 
-https://github.com/milon/laravel-todo (A really good example to geyt started)
+https://github.com/milon/laravel-todo (A really good example to get started)
 
-I plan to add my own extra features to this and use this forked repo as a starting point.
+I plan to add my own extra features to this and use the original project as a starting point.
 
 ## Installation
 
