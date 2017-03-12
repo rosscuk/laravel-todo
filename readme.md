@@ -6,13 +6,19 @@ It has been forked from a really good simple example:
 
 https://github.com/milon/laravel-todo (A really good example to get started)
 
-I plan to add my own extra features to this and use the original project as a starting point.
+So far I have added features:
+
+filtering by status
+
+editing of tasks
+
+subtasks 
 
 ## Installation
 
 Clone the repository-
 ```
-git clone https://github.com/milon521/laravel-todo.git
+git clone https://github.com/rosscuk/laravel-todo
 ```
 
 Then cd into the folder with this command-

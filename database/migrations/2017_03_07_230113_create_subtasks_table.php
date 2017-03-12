@@ -29,6 +29,6 @@ class CreateSubtasksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('subtask');
+        Schema::drop('subtasks');
     }
 }
